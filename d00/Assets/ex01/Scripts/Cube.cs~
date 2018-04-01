@@ -1,0 +1,20 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Cube : MonoBehaviour {
+	public GameObject cube;
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (cube.transform.position.y < -4) {
+		   GameObject.Destroy(cube);
+		}
+		cube.transform.Translate(0, -0.1f, 0);
+	}
+}

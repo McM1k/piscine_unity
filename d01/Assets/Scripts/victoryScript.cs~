@@ -1,0 +1,49 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class victoryScript : MonoBehaviour {
+
+
+
+	public bool rOk;
+	public bool yOk;
+	public bool bOk;
+	private static bool redOk;
+	private static bool yellowOk;
+	private static bool blueOk;
+
+	// Use this for initialization
+	void Start () {
+		redOk = false;
+		yellowOk = false;
+		blueOk = false;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		rOk = redOk;
+		yOk = yellowOk;
+		bOk = blueOk;
+		if (redOk && yellowOk && blueOk)
+		 	Debug.Log("You Won!");
+	}
+
+	void OnTriggerEnter2D(Collider2D player) {
+		if (player.name == "red")
+		 	redOk = true;
+		if (player.name == "yellow")
+		   	yellowOk = true;
+		if (player.name == "blue")
+		   	blueOk = true;
+	}
+
+	void OnTriggerExit2D(Collider2D player) {
+		if (player.name == "red")
+		 	redOk = false;
+		if (player.name == "yellow")
+		   	yellowOk = false;
+		if (player.name == "blue")
+		   	blueOk = false;		 	
+	}
+}

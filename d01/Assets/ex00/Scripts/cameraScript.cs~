@@ -1,0 +1,37 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class cameraScript : MonoBehaviour {
+
+	public int player;
+	
+	public GameObject camera;
+	public GameObject red;
+	public GameObject yellow;
+	public GameObject blue;
+
+	// Use this for initialization
+	void Start () {
+		player = 1;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (Input.GetKeyDown("1"))
+			player = 1;
+		if (Input.GetKeyDown("2"))
+			player = 2;
+		if (Input.GetKeyDown("3"))
+			player = 3;
+
+		if (player == 1)
+		   	camera.transform.position = red.transform.localPosition;
+		if (player == 2)
+		   	camera.transform.position = yellow.transform.localPosition;
+		if (player == 3)
+		   	camera.transform.position = blue.transform.localPosition;
+
+		
+	}
+}

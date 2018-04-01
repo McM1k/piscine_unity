@@ -1,0 +1,41 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CubeSpawner : MonoBehaviour {
+
+	public string type;
+	public bool exists;
+	public GameObject cube;
+	public GameObject spawned;
+
+	// Use this for initialization
+	void Start () {
+		 exists = false;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (!exists) {
+		   	if (Random.Range(0, 100) == 0) {
+		   		spawned = GameObject.Instantiate(cube);
+				exists = true;
+		    }
+		}
+		else if (Input.GetKeyDown(type)) {
+			if (spawned.transform.localPosition.y >= -3)
+			   	Debug.Log(0);
+			if (spawned.transform.localPosition.y < -3 && spawned.transform.localPosition.y >= -4)
+			   	Debug.Log((spawned.transform.localPosition.y + 3.0f) * (-100));
+			else if (spawned.transform.localPosition.y < -4 && spawned.transform.localPosition.y > -5)
+			   	Debug.Log(100 - ((spawned.transform.localPosition.y + 4.0f) * (-100)));
+		 	GameObject.Destroy(spawned);
+			exists = false;
+		}			
+		else if (spawned.transform.localPosition.y < -5) {
+			Debug.Log(0);
+		 	GameObject.Destroy(spawned);
+			exists = false;
+		}
+	}
+}

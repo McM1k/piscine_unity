@@ -1,0 +1,34 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Balloon : MonoBehaviour {
+	public int stamina;
+	public float size;
+	public GameObject balloon;
+
+	// Use this for initialization
+	void Start () {
+		size = 1.0f;
+		stamina = 100000;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		size -= 0.02f;
+		if (stamina < 100000) {
+		   stamina++;
+		}
+		
+		if (Input.GetKeyDown("space") && stamina >= 100000) {
+		   size += 0.3f;
+		   stamina -= 10000;
+		}
+		balloon.transform.localScale = new Vector3(size, size, 1);
+
+		if (balloon.transform.localScale.x < 0 || balloon.transform.localScale.x > 5) {
+		   GameObject.Destroy(balloon);
+		   Debug.Log(Time.time);
+		}
+	}
+}
